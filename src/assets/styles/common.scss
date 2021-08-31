@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+// 侧边栏展开时样式
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    min-height: 100vh;
+    overflow-y: scroll;
+    transition: all 0.5s;
+    .title{
+        width: 200px;
+        opacity: 0.5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #17cfe7;
+        font-size: 30px;
+        border-bottom: 2px solid hsla(0,0%,100%,.04);
+        .icon-logo{
+            width: 40px;
+            height: 40px;
+        }
+    }                                                                                                                                                                                                                                                                                                                                                   
+}
+// 侧边栏合起时样式
+.el-menu-vertical-demo {
+    min-height: 100vh;
+    flex-direction: column;
+    .logo{
+        width: 40px;
+        height: 40px;
+    }
+    .title{
+        opacity: 0.5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #17cfe7;
+        font-size: 0;
+        border-bottom: 2px solid hsla(0,0%,100%,.04);
+        .icon-logo{
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
