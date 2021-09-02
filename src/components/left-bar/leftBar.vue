@@ -1,6 +1,6 @@
 <template>
-  <div class="left-bar">
-      <el-row>
+    <div id="left-bar">
+        <el-row>
             <el-col :span="24">
                 <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="$store.state.isCollapse == false">
                     <!-- 图标站名 -->
@@ -9,17 +9,16 @@
                         <span>XTab</span>  
                     </div>
                     <!-- 侧边栏导航 -->
-                    <el-sub-menu index="1" v-for="(item,index) in navInfo" :key="index" @click="toNAV(item.id)">
+                    <el-sub-menu index="1" class="tab" v-for="(item,index) in navInfo" :key="index" @click="toNAV(item.id)">
                         <template #title class="nav-container">
                             <el-image class="logo" :src="item.icon" fit="cover" lazy />
                             <span>{{item.name}}</span>
                         </template>
-                        <!-- <el-menu-item-group>
-                            <el-menu-item :index="`${index}-${idx}`" v-for="(nav,idx) in item.children" :key="nav._id" @click="findNav(nav._id)">
-                                <a href="#">{{nav.name}}</a>
-                            </el-menu-item>
-                        </el-menu-item-group> -->
                     </el-sub-menu>
+                    <!-- 添加侧边栏分类 -->
+                    <div class="tab add-tab">
+                        <tab-alert></tab-alert>
+                    </div> 
                 </el-menu>
             </el-col>
         </el-row>    
@@ -30,7 +29,9 @@
 import toNAV from '@/use/toNav'
 import { useStore } from 'vuex'
 import { computed } from '@vue/reactivity'
+import tabAlert from './tabAlert.vue'
 export default {
+  components: { tabAlert },
     setup() {
         const store = useStore()
         return{
@@ -42,6 +43,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#left-bar{
+    width: 250px;
+    height: 100vh;
+    float: left;
+    background-color: rgb(44, 42, 42);
+}
 .el-sub-menu{
     cursor: pointer;
     height: 50px;
@@ -51,8 +58,12 @@ export default {
 }
 .nav-container{
     display: inline-block;
-    widows: 100%;
+    width: 100%;
     padding-left: 90px;
+}
+.add-tab{
+    text-align: center;
+    color: black;
 }
 </style>
 

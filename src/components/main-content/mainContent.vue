@@ -1,33 +1,35 @@
 <template>
-  <!-- 头部内容 -->
-  <hcontent id="hcontent"></hcontent>
-  <!-- 内容区 -->
-  <div id="content">
-    <div id="each-content" v-for="(tab) in catalogue" :key="tab.id">
-      <!-- 分类相关内容 -->
-      <div :id="tab.id" class="tab-name">
-        <el-image class="navLogo" :src="tab.logo" fit="cover" lazy></el-image>
-        <span class="navName">{{tab.name}}</span>
-        <!-- 编辑状态时，编辑和删除某一分类 -->
-        <span :class="['edit-tab-name', {'tabIsEdit': tab.id == editWhich}]">
-          <edit class="edit-icon"/>
-          <delete class="delete-icon" />
-        </span>
-        <span :class="['edit', {'idEdit': tab.id == editWhich}]" @click="handleEdit(tab.id)">{{tab.id == editWhich ?'退出' : '编辑'}}</span>
-      </div>
-      <!-- 分类区内导航内容 -->
-      <ul class="nav-boxes" @dragstart="navBoxDragStart" @dragend="navBoxDragEnd">
-        <li v-for="(nav) in tab.URLS" :key="nav.id" class="each-nav-box" :draggable="tab.id == editWhich ? true : false"
-        @dragenter="urlBoxEnter($event, tab.id)" :data-id="nav.id">
-          <a :href="nav.url" target="_blank" class="url-link">
-            <span class="url-name">{{nav.name}}</span>
-          </a>
-          <span :class="['edit-container', {'urlIsEdit' : tab.id == editWhich}]">
-            <edit class="edit-icon"/>
-            <delete class="delete-icon" />
+  <div class="contanier">
+    <!-- 头部内容 -->
+    <hcontent id="hcontent"></hcontent>
+    <!-- 内容区 -->
+    <div id="content">
+      <div id="each-content" v-for="(tab) in catalogue" :key="tab.id">
+        <!-- 分类相关内容 -->
+        <div :id="tab.id" class="tab-name">
+          <el-image class="navLogo" :src="tab.logo" fit="cover" lazy></el-image>
+          <span class="navName">{{tab.name}}</span>
+          <!-- 编辑状态时，编辑和删除某一分类 -->
+          <span :class="['edit-tab-name', {'tabIsEdit': tab.id == editWhich}]">
+            <i class="el-icon-edit"></i>
+            <i class="el-icon-delete"></i>
           </span>
-        </li>
-      </ul>
+          <span :class="['edit', {'idEdit': tab.id == editWhich}]" @click="handleEdit(tab.id)">{{tab.id == editWhich ?'退出' : '编辑'}}</span>
+        </div>
+        <!-- 分类区内导航内容 -->
+        <ul class="nav-boxes" @dragstart="navBoxDragStart" @dragend="navBoxDragEnd">
+          <li v-for="(nav) in tab.URLS" :key="nav.id" class="each-nav-box" :draggable="tab.id == editWhich ? true : false"
+          @dragenter="urlBoxEnter($event, tab.id)" :data-id="nav.id">
+            <a :href="nav.url" target="_blank" class="url-link">
+              <span class="url-name">{{nav.name}}</span>
+            </a>
+            <span :class="['edit-container', {'urlIsEdit' : tab.id == editWhich}]">
+            <i class="el-icon-edit"></i>
+            <i class="el-icon-delete"></i>
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -48,7 +50,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hcontent{
+.contanier{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#hcontent{
+  width: 100%;
   background-color: white;
   height: 80px;
   box-shadow: 1px 1px 5px #eee;
