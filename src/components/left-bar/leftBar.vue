@@ -9,9 +9,9 @@
                         <span>XTab</span>  
                     </div>
                     <!-- 侧边栏导航 -->
-                    <el-sub-menu index="1" class="tab" v-for="(item,index) in navInfo" :key="index" @click="toNAV(item.id)">
-                        <template #title class="nav-container">
-                            <el-image class="logo" :src="item.icon" fit="cover" lazy />
+                    <el-sub-menu index="1" class="tab" v-for="(item,index) in navInfo" :key="index">
+                        <template #title class="tab-container" @click="toNAV(item.id)">
+                            <i :class="['fa', `fa-${item.icon}`,'tabIcon']"></i>
                             <span>{{item.name}}</span>
                         </template>
                     </el-sub-menu>
@@ -26,14 +26,16 @@
 </template>
 
 <script>
-import toNAV from '@/use/toNav'
+import toNAV from '../../use/toNav'
 import { useStore } from 'vuex'
 import { computed } from '@vue/reactivity'
 import tabAlert from './tabAlert.vue'
+// import {inject} from 'vue'
 export default {
-  components: { tabAlert },
+    components: { tabAlert },
     setup() {
         const store = useStore()
+        // const $message = inject('message')      // 获取message组件方法
         return{
             toNAV,
             navInfo: computed(() => store.state.catalogue)
@@ -56,10 +58,16 @@ export default {
     line-height: 50px;
     position: relative;
 }
-.nav-container{
+.tab-container{
     display: inline-block;
     width: 100%;
+    text-align: center;
     padding-left: 90px;
+}
+.tabIcon{
+    color: red;
+    margin-right: 10px;
+    font-size: 30px;
 }
 .add-tab{
     text-align: center;

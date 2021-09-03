@@ -3,7 +3,7 @@ const toNAV = function(id) {
     const content = document.getElementById('content')
     const el = document.getElementById(`${id}`)
     let start = content.scrollTop
-    let end = el.offsetTop - 50
+    let end = el.offsetTop - 80
     let each = start > end ? -1*Math.abs(start - end) / 20 : Math.abs(start - end) / 20
     let count = 0
     let scroll = () => {

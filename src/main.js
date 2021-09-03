@@ -5,17 +5,13 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import './assets/styles/style.scss'
 
-const app = createApp(App)
-app.use(store)
-app.use(ElementPlus)
-app.mount('#app')
-
 // iconPicker
 import eIconPicker from 'e-icon-picker';
 import "e-icon-picker/lib/symbol.js"; //基本彩色图标库
 import 'e-icon-picker/lib/index.css'; // 基本样式，包含基本图标
 import 'font-awesome/css/font-awesome.min.css'; //font-awesome 图标库
-// import 'element-plus/lib/theme-chalk/icon.css'; //element-plus 图标库
+
+const app = createApp(App)
 
 app.use(eIconPicker, {
     FontAwesome: true,
@@ -25,4 +21,9 @@ app.use(eIconPicker, {
     addIconList: [],
     removeIconList: [],
     zIndex: 3100//选择器弹层的最低层,全局配置
-});
+})
+
+app.use(store)
+app.use(ElementPlus)
+app.mount('#app')
+
