@@ -14,7 +14,6 @@ import MainContent from './components/main-content/mainContent.vue'
 export default {
   components: { leftBar, MainContent },
   setup() {
-    
   },
 }
 </script>
