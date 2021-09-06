@@ -11,10 +11,10 @@
           <span class="eachTabName">{{tab.name}}</span>
           <!-- 编辑状态时，编辑和删除某一分类 -->
           <span :class="['edit-tab-name', {'tabIsEdit': tab.id == editWhich}]">
-            <i class="el-icon-edit"></i>
-            <i class="el-icon-delete"></i>
+            <i class="el-icon-edit" @click="editTab(tab.id)"></i>
+            <i class="el-icon-delete" @click="deleteTab(tab.id)"></i>
           </span>
-          <span :class="['edit', {'isEdit': tab.id == editWhich}]" @click="handleEdit(tab)">{{tab.id == editWhich ? '退出' : '编辑'}}</span>
+          <span :class="['edit', {'isEdit': tab.id == editWhich}]" @click="handleEdit(tab.id)">{{tab.id == editWhich ? '退出' : '编辑'}}</span>
         </div>
         <!-- 分类区内导航内容 -->
         <ul class="nav-container">
@@ -24,8 +24,8 @@
               <span class="url-name">{{nav.name}}</span>
             </a>
             <span :class="['edit-container', {'urlIsEdit' : tab.id == editWhich}]">
-              <i class="el-icon-edit"></i>
-              <i class="el-icon-delete"></i>
+              <i class="el-icon-edit" @click="editNav(nav.id)"></i>
+              <i class="el-icon-delete" @click="deleteNav(nav.id)"></i>
             </span>
           </li>
         </ul>
@@ -38,20 +38,23 @@
 import hcontent from './hcontent.vue'
 import { useStore } from 'vuex'
 import { computed, reactive, toRefs } from '@vue/reactivity'
+import editFunction from '../../use/edit'
 export default {
   components: { hcontent },
     setup() {
       const state = reactive({
-        editWhich : false
       })
       const store = useStore()
-      let handleEdit = (tab) => {
-        tab.id = !tab.id
-      }
+      let { editWhich,handleEdit, editTab, deleteTab, editNav, deleteNav} = editFunction()
       return{
         catalogue: computed(() => store.state.catalogue),
+        editWhich,
         ...toRefs(state),
-        handleEdit
+        handleEdit,
+        editTab,
+        deleteTab,
+        editNav,
+        deleteNav
       }
     },
 }

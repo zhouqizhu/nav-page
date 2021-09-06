@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import moduleTab from "./modules/tab";
+import controlBar from "./modules/controlBar";
 const state = {
     isCollapse: false,
     catalogue: [
@@ -7,7 +8,8 @@ const state = {
             id: '1', name: '常用网站', icon: 'fa fa-wpexplorer',
             URLS: [
                 {id:'1.1' , url: 'https://v3.cn.vuejs.org/guide/introduction.html', icon: 'https://v3.cn.vuejs.org/logo.png', name: 'Vue3文档'},
-                {id:'1.2' , url: 'https://github.com/', icon: 'https://img0.baidu.com/it/u=649373506,1467315974&fm=26&fmt=auto&gp=0.jpg', name: 'GitHub'},
+                {id:'1.2' , url: 'https://next.vuex.vuejs.org/zh/', icon: 'https://v3.cn.vuejs.org/logo.png', name: 'Vuex文档'},
+                {id:'1.3' , url: 'https://github.com/', icon: 'https://img0.baidu.com/it/u=649373506,1467315974&fm=26&fmt=auto&gp=0.jpg', name: 'GitHub'},
             ]
         }
     ]
@@ -16,12 +18,36 @@ const state = {
 const actions = {
     collapse: ({ commit }) => commit('collapse'),
 }
-// const getters = {
 
-// }
 const mutations = {
     // 控制侧边栏开合
     collapse: state => state.isCollapse = !state.isCollapse,
+    // 移除
+    remove(state ,payload) {
+        // 需要判断是删除分类标签还是网址导航
+        const catalogue = state.catalogue
+        let len1 = catalogue.length
+        for(let i=0; i<len1; i++) {
+            let current = catalogue[i],
+                URLS = current.URLS,
+                len2 = URLS.length
+            if(current.id === payload[0]) {
+                // 删除标签分类以及标签分类中的内容
+                if(payload.length === 1) {
+                    catalogue.splice(i, 1)
+                    break
+                }
+            }
+            // 删除标签分类中的某个网址
+            for(let j=0; j<len2; j++) {
+                let URL = URLS[j]
+                if(URL.id === payload) {
+                    URLS.splice(j, 1)
+                    break
+                }
+            }
+        }
+    },
     // 添加
     add(state, payload) {
         let {key, value} = payload
@@ -46,6 +72,7 @@ export default createStore({
     mutations,
     actions,
     modules: {
-        moduleTab
+        moduleTab,
+        controlBar
     }
 })
