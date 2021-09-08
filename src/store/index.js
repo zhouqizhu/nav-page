@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import moduleTab from "./modules/tab";
-import controlBar from "./modules/controlBar";
+// import controlBar from "./modules/controlBar";
 const state = {
     isCollapse: false,
     catalogue: [
@@ -50,12 +50,14 @@ const mutations = {
     },
     // 添加
     add(state, payload) {
-        let {key, value} = payload
+        let {key, id, value} = payload
         const catalogue = state.catalogue
-        let len = catalogue.length
+        let len1 = catalogue.length
+        const len = catalogue[id-1].URLS.length
+        const navURL = catalogue[id-1].URLS
         // 添加分类
         if(key == '1') {
-            let _id =  len == 0 ? '1' : (+catalogue[len -1].id + 1).toString()
+            let _id = len1 == 0 ? '1' : (+catalogue[len1 -1].id + 1).toString()
             catalogue.push({
                 id: _id,
                 name: value.name,
@@ -63,6 +65,29 @@ const mutations = {
                 URLS: []
             })
             // updateLocal(store)
+        }
+        // 添加导航
+        if(key == '2') {
+            let _id =  len == 0 ? '1' : (+navURL[len-1].id + 0.1).toString()
+            navURL.push({
+                id: _id,
+                name: value.name,
+                url: value.url,
+                icon: ''
+            })
+            // updateLocal(store)
+        }
+    },
+    //更新
+    update(state, payload) {
+        let {key, value} = payload
+        const catalogue = state.catalogue
+        let len = catalogue.length
+        for(let i=0; i<len; i++) {
+            if(catalogue[i].id == key) {
+                catalogue[i].name = value.name
+                catalogue[i].icon = value.icon
+            }
         }
     }
 }
@@ -73,6 +98,6 @@ export default createStore({
     actions,
     modules: {
         moduleTab,
-        controlBar
+        // controlBar
     }
 })

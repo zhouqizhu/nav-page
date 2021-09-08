@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 import leftBar from './components/left-bar/leftBar.vue'
 import MainContent from './components/main-content/mainContent.vue'
 export default {

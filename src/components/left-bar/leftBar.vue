@@ -17,7 +17,7 @@
                     </el-sub-menu>
                     <!-- 添加侧边栏分类 -->
                     <div class="tab add-tab">
-                        <tab-alert></tab-alert>
+                        <tab-alert title="添加分类" elicon="el-icon-plus"></tab-alert>
                     </div> 
                 </el-menu>
             </el-col>
@@ -29,7 +29,7 @@
 import toNAV from '../../use/toNav'
 import { useStore } from 'vuex'
 import { computed } from '@vue/reactivity'
-import tabAlert from './tabAlert.vue'
+import tabAlert from '../public/tabAlert.vue'
 // import {inject} from 'vue'
 export default {
     components: { tabAlert },

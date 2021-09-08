@@ -11,7 +11,7 @@
           <span class="eachTabName">{{tab.name}}</span>
           <!-- 编辑状态时，编辑和删除某一分类 -->
           <span :class="['edit-tab-name', {'tabIsEdit': tab.id == editWhich}]">
-            <i class="el-icon-edit" @click="editTab(tab.id)"></i>
+              <tab-alert title="编辑分类" elicon="el-icon-edit" :id="tab.id"></tab-alert>
             <i class="el-icon-delete" @click="deleteTab(tab.id)"></i>
           </span>
           <span :class="['edit', {'isEdit': tab.id == editWhich}]" @click="handleEdit(tab.id)">{{tab.id == editWhich ? '退出' : '编辑'}}</span>
@@ -28,6 +28,9 @@
               <i class="el-icon-delete" @click="deleteNav(nav.id)"></i>
             </span>
           </li>
+          <li class="eachNavBox">
+            <nav-alert :id="tab.id"></nav-alert>
+          </li>
         </ul>
       </div>
     </div>
@@ -39,8 +42,10 @@ import hcontent from './hcontent.vue'
 import { useStore } from 'vuex'
 import { computed, reactive, toRefs } from '@vue/reactivity'
 import editFunction from '../../use/edit'
+import tabAlert from '../public/tabAlert.vue'
+import navAlert from '../public/navAlert.vue'
 export default {
-  components: { hcontent },
+  components: { hcontent, tabAlert, navAlert },
     setup() {
       const state = reactive({
       })
