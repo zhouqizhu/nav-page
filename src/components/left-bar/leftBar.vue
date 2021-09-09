@@ -49,7 +49,7 @@ export default {
     width: 250px;
     height: 100vh;
     float: left;
-    background-color: rgb(44, 42, 42);
+    // background-color: rgb(44, 42, 42);
 }
 .el-sub-menu{
     cursor: pointer;

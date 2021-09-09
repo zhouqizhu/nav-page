@@ -29,6 +29,10 @@ export default defineComponent({
         id: {
             type: String,
             default: ''
+        },
+        title: {
+            type: String,
+            default: ''
         }
     },
     setup() {

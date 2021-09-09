@@ -53,8 +53,6 @@ const mutations = {
         let {key, id, value} = payload
         const catalogue = state.catalogue
         let len1 = catalogue.length
-        const len = catalogue[id-1].URLS.length
-        const navURL = catalogue[id-1].URLS
         // 添加分类
         if(key == '1') {
             let _id = len1 == 0 ? '1' : (+catalogue[len1 -1].id + 1).toString()
@@ -67,8 +65,10 @@ const mutations = {
             // updateLocal(store)
         }
         // 添加导航
-        if(key == '2') {
-            let _id =  len == 0 ? '1' : (+navURL[len-1].id + 0.1).toString()
+        else if(key == '2') {
+            const len2 = catalogue[id-1].URLS.length
+            const navURL = catalogue[id-1].URLS
+            let _id =  len2 == 0 ? '1' : (+navURL[len2-1].id + 0.1).toString()
             navURL.push({
                 id: _id,
                 name: value.name,
