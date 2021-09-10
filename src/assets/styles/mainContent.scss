@@ -1,0 +1,116 @@
+.contanier{
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  #hcontent{
+    width: 100%;
+    background-color: white;
+    height: 80px;
+    box-shadow: 1px 1px 5px #eee;
+    line-height: 80px;
+    position: relative;
+  }
+  #content{
+    height: calc(100% - 80px);
+    overflow: hidden;
+  }
+  .tab-contanier{
+    height: 50px;
+    line-height: 50px;
+    color: #66629e;
+    margin-left: 20px;
+    position: relative;
+    .fa{
+    font-size: 25px;
+    margin-right: 5px;
+    }
+    .eachTabName{
+      font-size: 20px;
+    }
+    .edit-tab-name{
+      display: inline-block;
+      width: 45px;
+      height: 20.8px;
+      line-height: 20.8px;
+      margin-left: 10px;
+      opacity: 0;
+    }
+    .tabIsEdit{
+      display: inline-block;
+      opacity: 1;
+      .el-icon-edit{
+        margin-right: 5px;
+      }
+    }
+    .edit{
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: rgb(172, 161, 161);
+      font-size: .8em;
+      cursor: pointer;
+    }
+  }
+  
+  .nav-container{
+    display: inline-block;
+    position: relative;
+  }
+  
+  .eachNavBox{
+      display: inline-block;
+      height: 150px;
+      width: 200px;
+      background-color: rgb(195, 218, 176);
+      box-shadow: 0 0 3px 3px  rgba(225, 225, 225, .1);
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: 15px 0 15px 30px;
+      position: relative;
+      .url-link{
+      height: 100%;
+      width: 100%;
+      position: relative;
+      .nav-image{
+      height: 60%;
+      width: 60%;
+      margin: 5% 20% 5%;
+      }
+      .url-name{
+        display: block;
+        height: 25.5%;
+        text-align: center;
+        color: #666;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 10px;
+        word-break: break-all;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  
+  .edit-container{
+    position: absolute;
+    top: 0;
+    right: -55px;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    line-height: 25px;
+    // transition: all .5s ease;
+    opacity: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: rgb(248, 237, 237);
+  }
+  .urlIsEdit{
+    opacity: 1;
+    transform: translate(-50px);
+    .el-icon-edit{
+      margin-right: 5px;
+    }
+  }

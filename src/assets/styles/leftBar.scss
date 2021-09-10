@@ -7,7 +7,10 @@
     min-height: 100vh;
     overflow-y: scroll;
     transition: all 0.5s;
+    width: 200px;
     .title{
+        left: 0; 
+        transform: translateX(0);
         width: 200px;
         opacity: 0.5;
         display: flex;
@@ -24,14 +27,16 @@
 }
 // 侧边栏合起时样式
 .el-menu-vertical-demo {
+    width: 100px;
     min-height: 100vh;
-    flex-direction: column;
     .title{
+        left: 50%; 
+        transform: translateX(50%);
         opacity: 0.5;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #17cfe7;
+        // background-color: #17cfe7;
         font-size: 0;
         border-bottom: 2px solid hsla(0,0%,100%,.04);
         .icon-logo{
