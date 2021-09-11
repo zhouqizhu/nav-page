@@ -35,16 +35,25 @@ export default {
 
 <style lang="scss" scoped>
 .controlleBar{
-    top: 50%;
     padding-right: 30px;
+    vertical-align: middle;
 }
 .sentence{
     display: inline-block;
+    top: 50%;
     vertical-align: middle;
-    // margin-top: 20px;
-    width: 80%;
-    line-height: 50px;
-    height: 50px;
+    width: 70%;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 6px;
     box-shadow: 0px 0px 3px #b48c8c;
+}
+.sentence > i {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+.sentence>span{
+    height: 40px;
+    line-height: 40px;
 }
 </style>

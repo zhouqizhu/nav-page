@@ -9,7 +9,7 @@
                 <el-input v-model="form.name" placeholder="请输入内容" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="添加图标" :label-width="formLabelWidth">
-               <e-icon-picker v-model="form.icon"/>
+               <iconpicker v-model="form.icon"></iconpicker>
             </el-form-item>
         </el-form>
         <template #footer>
@@ -23,7 +23,7 @@
 
 <script>
   import { defineComponent, reactive, toRefs } from 'vue';
-  import {EIconPicker} from 'e-icon-picker';
+  import iconpicker from './icon.vue'
   import { useStore } from 'vuex';
   export default defineComponent({
     props:{
@@ -38,13 +38,13 @@
       id: {
         type: String,
         default: '9999'
-      }
+      },
     },
-    components: {EIconPicker},
+    components: {iconpicker},
     setup() {
       const state = reactive({
         dialogFormVisible: false,
-        form: { name: '', icon: '' },
+        form: { name: '' },
         formLabelWidth: '120px',
       })
       let store = useStore()

@@ -5,7 +5,7 @@ const state = {
     isCollapse: false,
     catalogue: [
         {
-            id: '1', name: '常用网站', icon: 'fa fa-wpexplorer',
+            id: '1', name: '常用网站', icon: 'el el-icon-star-on',
             URLS: [
                 {id:'1.1' , url: 'https://v3.cn.vuejs.org/guide/introduction.html', icon: 'https://v3.cn.vuejs.org/logo.png', name: 'Vue3文档'},
                 {id:'1.2' , url: 'https://next.vuex.vuejs.org/zh/', icon: 'https://v3.cn.vuejs.org/logo.png', name: 'Vuex文档'},
